@@ -62,7 +62,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(xmlhttp.responseText);
-	data=JSON.parse("("+xmlhttp.responseText+")");
+	document.getElementById("myDiv").value=xmlhttp.responseText;
 	loader();
     }
   }
@@ -78,7 +78,8 @@ function addMonths(date, months) {
 function loader()
 {
 //Begin JSON loader
-	alert("hi!")
+	alert("hi!");
+	alert(document.getElementById("myDiv").value);
 	
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
 	document.getElementById("recent").innerHTML="<h1 class=\"content-subhead\">Recent Posts</h1>";
@@ -86,7 +87,7 @@ function loader()
 	var d = new Date();
 	var v = addMonths(new Date(), -3); //this is kinda ugly
 	var cpost = 0;
-	var posts = data;
+	var posts = JSON.parse(document.getElementById("myDiv").value);
 	for (i=0;i<posts.posts.length;i++){
 		cpost=posts.posts[i];
 		if ((cpost.EventDate.split("/")[2]*10000+cpost.EventDate.split("/")[0]*100+cpost.EventDate.split("/")[1]*1)>((d.getFullYear()*10000)+(d.getMonth()+1)*100+d.getDate())){
@@ -150,7 +151,7 @@ function loader()
     <div class="content pure-u-1 pure-u-med-3-4">
         <div id="postarea">
             <!-- A wrapper for all the blog posts -->
-			
+			<input type="hidden" id="postjson" value=""/>
 			<!--begin post area-->
             <div class="posts" id="pinned">
 			
