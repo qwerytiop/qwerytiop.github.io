@@ -49,7 +49,7 @@
 function setup(){
 //posts.json retrieve
 alert("version6:12");
-$.get("json/posts.json",function(data){alert("sugar");  loader(JSON.parse(data));  });
+$.getJSON("json/posts.json",function(data){alert("sugar");  loader(data);  });
 }
 //--------------------------------------------
 function addMonths(date, months) {
@@ -60,6 +60,7 @@ function addMonths(date, months) {
 function loader(kitten)
 {
 //Begin JSON loader
+	alert("tea");
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
 	document.getElementById("recent").innerHTML="<h1 class=\"content-subhead\">Recent Posts</h1>";
 	alert("yay!");
