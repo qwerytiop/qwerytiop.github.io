@@ -62,7 +62,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(xmlhttp.responseText);
-	document.getElementById("myDiv").value=xmlhttp.responseText;
+	document.getElementById("postjson").value=xmlhttp.responseText;
 	loader();
     }
   }
@@ -79,7 +79,7 @@ function loader()
 {
 //Begin JSON loader
 	alert("hi!");
-	alert(document.getElementById("myDiv").value);
+	alert(document.getElementById("postjson").value);
 	
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
 	document.getElementById("recent").innerHTML="<h1 class=\"content-subhead\">Recent Posts</h1>";
@@ -87,7 +87,7 @@ function loader()
 	var d = new Date();
 	var v = addMonths(new Date(), -3); //this is kinda ugly
 	var cpost = 0;
-	var posts = JSON.parse(document.getElementById("myDiv").value);
+	var posts = JSON.parse(document.getElementById("postjson").value);
 	for (i=0;i<posts.posts.length;i++){
 		cpost=posts.posts[i];
 		if ((cpost.EventDate.split("/")[2]*10000+cpost.EventDate.split("/")[0]*100+cpost.EventDate.split("/")[1]*1)>((d.getFullYear()*10000)+(d.getMonth()+1)*100+d.getDate())){
