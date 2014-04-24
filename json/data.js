@@ -1,5 +1,4 @@
 function setup(){
-data = new Object();
 //posts.json retrieve
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -9,15 +8,17 @@ if (window.XMLHttpRequest)
  
 xmlhttp.onreadystatechange=function()
   {
+  var supercat;
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    data.posts=JSON.parse(xmlhttp.responseText);
+    supercat=JSON.parse(xmlhttp.responseText);
 	alert(data.posts);
+	return loader(supercat);
     }
   }
 
 xmlhttp.open("GET","json/posts.json",true);
 xmlhttp.send();
 
-return loader();
+
 }

@@ -51,7 +51,7 @@ function addMonths(date, months) {
   return date;
 }
 
-function loader()
+function loader(kitten)
 {
 //Begin JSON loader
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
@@ -60,7 +60,7 @@ function loader()
 	var d = new Date();
 	var v = addMonths(new Date(), -3); //this is kinda ugly
 	var cpost = 0;
-	var posts = data.posts;
+	var posts = kitten;
 	for (i=0;i<posts.posts.length;i++){
 		cpost=posts.posts[i];
 		alert(cpost.EventDate.split("/")[2]*10000+cpost.EventDate.split("/")[0]*100+cpost.EventDate.split("/")[1]*1);
