@@ -11,8 +11,8 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	alert(xmlhttp.responseText);
     data.posts=JSON.parse(xmlhttp.responseText);
+	alert(data.posts);
     }
   }
 
