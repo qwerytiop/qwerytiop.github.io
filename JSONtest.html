@@ -48,6 +48,7 @@
 <script>
 function loadXMLDoc()
 {
+alert("hi");
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -76,7 +77,7 @@ function addMonths(date, months) {
 function loader()
 {
 //Begin JSON loader
-	setup();
+	alert("hi!")
 	
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
 	document.getElementById("recent").innerHTML="<h1 class=\"content-subhead\">Recent Posts</h1>";
@@ -121,7 +122,7 @@ function loader()
 
 
 </head>
-<body onload="loader();">
+<body onload="loadXMLDoc();">
 
 
 <div id="layout" class="pure-g">
