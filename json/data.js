@@ -11,11 +11,12 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
+	alert("xmlhttp.responseText");
     data.posts=JSON.parse("("+xmlhttp.responseText+")");
     }
   }
 
-xmlhttp.open("GET","posts.json",true);
+xmlhttp.open("GET","json/posts.json",true);
 xmlhttp.send();
 
 return loader();
