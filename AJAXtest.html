@@ -46,20 +46,17 @@
 <script src="json/data.js"></script>
 
 <script>
-function setup(){
-//posts.json retrieve
-alert("version6:12");
-$.get("json/posts.json",function(data){alert(data)});
-}
 //--------------------------------------------
 function addMonths(date, months) {
   date.setMonth(date.getMonth() + months);
   return date;
 }
 //----------------------------------------------
-function loader(kitten)
+function loader()
 {
 //Begin JSON loader
+	setup();
+	
 	alert("tea");
 	document.getElementById("pinned").innerHTML="<h1 class=\"content-subhead\">Pinned Posts</h1>";
 	document.getElementById("recent").innerHTML="<h1 class=\"content-subhead\">Recent Posts</h1>";
@@ -67,7 +64,7 @@ function loader(kitten)
 	var d = new Date();
 	var v = addMonths(new Date(), -3); //this is kinda ugly
 	var cpost = 0;
-	var posts = kitten;
+	var posts = data;
 	for (i=0;i<posts.posts.length;i++){
 		cpost=posts.posts[i];
 		alert(cpost.EventDate.split("/")[2]*10000+cpost.EventDate.split("/")[0]*100+cpost.EventDate.split("/")[1]*1);
@@ -105,7 +102,7 @@ function loader(kitten)
 
 
 </head>
-<body onload="setup();">
+<body onload="loader();">
 
 
 <div id="layout" class="pure-g">
