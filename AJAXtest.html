@@ -42,29 +42,14 @@
 
 </style>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="json/data.js"></script>
 
 <script>
 function setup(){
 //posts.json retrieve
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
- 
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    supercat=JSON.parse(xmlhttp.responseText);
-	alert(data.posts);
-	return loader(supercat);
-    }
-  }
-
-xmlhttp.open("GET","json/posts.json",true);
-xmlhttp.send();
+$.get("json/posts.json",function(data){
+      loader(JSON.parse(data));});
 }
 //--------------------------------------------
 function addMonths(date, months) {
