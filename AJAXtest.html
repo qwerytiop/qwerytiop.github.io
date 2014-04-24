@@ -49,7 +49,7 @@
 function setup(){
 //posts.json retrieve
 alert("version6:12");
-$.getJSON("json/posts.json",function(data){alert("sugar");  loader(data);  });
+$.get("json/posts.json",function(data){alert(data)});
 }
 //--------------------------------------------
 function addMonths(date, months) {
