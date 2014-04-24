@@ -62,7 +62,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(xmlhttp.responseText);
-	document.getElementById("postjson").value=xmlhttp.responseText;
+	document.getElementById("postjson").value=xmlhttp.responseText.replace("\'","\\\\\'").replace("\\\\\\\'","\\\\\'").replace("\\\\\\\\\'","\\\\\'");
 	loader();
     }
   }
