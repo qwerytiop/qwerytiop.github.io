@@ -1,0 +1,7 @@
+<html>
+<body>
+<iframe src="ad.html" width="1200" height="600" style="overflow:hidden;">
+<p>Your browser does not support iframes.</p>
+</iframe>
+</body>
+</html>
