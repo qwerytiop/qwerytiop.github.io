@@ -3,33 +3,25 @@
 <html>
 <head>
 <title>cows</title>
-<style>
-font.header{
-    font-family:TXT;
-    font-size:40px;
-    color:rgba(0,255,0,1);
+<script src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+<script>
+function comment(){
+    var d= new Date();
+    var chatRef = new Firebase("https://testingstuff.firebaseio.com/code");
+    chatRef.push({'time': (new Date()).getTime(),'name': value('name'), 'code': value('textareathingy')},function(){location.reload();});
 }
 
-body
-{
-	background: -webkit-linear-gradient(left, rgba(0,0,0,1), rgba(0,255,0,1)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(right, rgba(0,0,0,1), rgba(0,255,0,1)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(right, rgba(0,0,0,1), rgba(0,255,0,1)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,255,0,1)); /* Standard syntax (must be last) */
+value = function(id){
+return document.getElementById(id).value
 }
+	
+</script>
 
-</style>
 </head>
-<body link="#ffffff">
-<br/>
-<center>
-<img src="figure1.png"/><br/>
-<font style="color:black;"> Figure 1: A set of lines and coloured circles representing Santa Claus </font>
-<center>
-<p style="text-align:center;position:relative;top:100px;">
-<font class="header">Here is <a href = "main.html">a cow</a></font>
-</p>
-
+<body>
+name:<input type="text" id="name"/><br/>
+code:<textarea height=500 width=500 id="textareathingy" /><br/>
+<button onclick="comment();">click me to do sth!</button>
 
 </body>
 </html>
