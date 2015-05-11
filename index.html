@@ -2,26 +2,98 @@
 
 <html>
 <head>
-<title>cows</title>
-<script src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+<title>testing</title>
+<style>
+body{
+  overflow:hidden;
+}
+
+.container{
+  top:0%;
+  left:0%;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.page{
+  width:300%;
+  height:300%;
+  position:absolute;
+  top:0px;
+  left:0px;
+  background:lightblue;
+}
+
+.vertical{
+  width:100%;
+  height:33.333333333333333333333333333333333333333333333333333333333333333333%;
+  position:relative;
+  top:0px;
+  left:0px;
+  background:lightblue;
+  float:left;
+}
+
+.horizontal{
+  width:33.333333333333333333333333333333333333333333333333333333333333333333333333%;
+  height:100%;
+  position:relative;
+  top:0px;
+  left:0px;
+  background:lightblue;
+  border:solid 0px black;
+  float:left;
+}
+</style>
 <script>
-function comment(){
-    var d= new Date();
-    var chatRef = new Firebase("https://testingstuff.firebaseio.com/code");
-    chatRef.push({'time': (new Date()).getTime(),'name': value('name'), 'code': value('textareathingy')},function(){location.reload();});
+var target={l:0,t:0};
+var start=0;
+var lefti=0;
+var topi=0;
+var x=0.4;
+
+function step(delta) {
+  var timestamp = delta - start;
+  
+  //target={l:-100+100*Math.sin(delta/10000),t:-100+100*Math.cos(delta/10000)}
+  
+  var lk=lefti-target.l;
+  var tk=topi-target.t;
+  
+  lefti=(lefti*Math.pow(0.9,timestamp/(Math.pow(Math.abs(lk),x)*10))+target.l*(1-Math.pow(0.9,timestamp/(Math.pow(Math.abs(lk),x)*10))));
+  topi=(topi*Math.pow(0.9,timestamp/(Math.pow(Math.abs(tk),x)*10))+target.t*(1-Math.pow(0.9,timestamp/(Math.pow(Math.abs(tk),x)*10))));
+  
+  document.getElementById("group").style.left=lefti+"%";
+  document.getElementById("group").style.top=topi+"%";
+  
+  start = delta;
+  window.requestAnimationFrame(step);
 }
 
-value = function(id){
-return document.getElementById(id).value
-}
-	
+window.requestAnimationFrame(step);
 </script>
-
 </head>
-<body>
-name:<input type="text" id="name"/><br/>
-code:<textarea style="height:500px; width:500px;" id="textareathingy">mrow!</textarea><br/>
-<button onclick="comment();">click me to do sth!</button>
+<body onkeyup="target={l:Math.floor(Math.random()*3)*-100,t:Math.floor(Math.random()*3)*-100};">
+<div class="container">
+<div class="page" id="group">
+  <div class="vertical" id="group.0">
+    <div class="horizontal" id="group.0.0"></div>
+    <div class="horizontal" id="group.0.1" style="background:pink;"></div>
+    <div class="horizontal" id="group.0.2"></div>
+  </div>
+  <div class="vertical" id="group.1">
+    <div class="horizontal" id="group.1.0" style="background:lightgreen;"></div>
+    <div class="horizontal" id="group.1.1" style="background:url('http://androidcentral.us/wp-content/uploads/2014/06/low-poly-texture-18.png?f8fec0')"></div>
+    <div class="horizontal" id="group.1.2" style="background:lightgreen;"></div>
+  </div>
+  <div class="vertical" id="group.2">
+    <div class="horizontal" id="group.2.0"></div>
+    <div class="horizontal" id="group.2.1" style="background:pink;"></div>
+    <div class="horizontal" id="group.2.2"></div>
+  </div>
+</div>
+</div>
 
 </body>
 </html>
