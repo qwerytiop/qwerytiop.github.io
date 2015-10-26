@@ -14,14 +14,14 @@ function output(str){
 }
 
 function load(moves){
-        var fileref=document.createElement('script')
-        fileref.setAttribute("type","text/javascript")
-        fileref.setAttribute("src", "https://demo-project-qwerytiop.c9.io/.js?a="+"moves")
+        var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");
+        fileref.setAttribute("src", "https://demo-project-qwerytiop.c9.io/.js?a="+moves);
 }
 </script>
 </head>
 <body background="http://dreamatico.com/data_images/cat/cat-6.jpg">
-<input type="text" id="moo" value="meoww"/><button onclick="load(document.getElementById('moo').value);">submit!</button>
+<input type="text" id="moo" value="meoww"/><button onclick="load(document.getElementById('moo').value);console.log('hai')">submit!</button>
 <div id="meow">
 </div>
 </body>
